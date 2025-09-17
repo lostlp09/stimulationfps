@@ -2,7 +2,7 @@ extends CharacterBody3D
 @onready var Beanplayer:MeshInstance3D = $Beanplayer
 @onready var Camera:Camera3D = $"../Camera3D"
 var speed:int = 300
-const  Gravity:int = -30
+const  Gravity:int = -20
 
 func _physics_process(delta: float) -> void:
 	
@@ -27,6 +27,8 @@ func _physics_process(delta: float) -> void:
 		
 	self.velocity.x = direction.x * speed  * delta
 	self.velocity.z = direction.z * speed  * delta
+	
+	
 	
 	move_and_slide()
 

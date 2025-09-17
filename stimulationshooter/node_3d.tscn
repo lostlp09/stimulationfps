@@ -21,14 +21,8 @@ size = Vector3(25.4182, 1, 16.1339)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.048, -0.264644, 1.89419)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_volumetric_fog_energy = 18.18
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14751, 0.607732, -1.72493)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14751, 0.607732, -0.724847)
 mesh = SubResource("CylinderMesh_a202f")
 skin = SubResource("Skin_noarx")
 skeleton = NodePath("../CharacterBody3D/Beanplayer")
@@ -57,9 +51,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23163, 0.866244, -0.473661)
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(28.6195, 0, 0, 0, 0.983, 0, 0, 0, 19.504, 0, 0, 0)
+transform = Transform3D(28.6195, 0, 0, 0, 0.983, 0, 0, 0, 19.504, 0, 0.240253, 0)
 mesh = SubResource("BoxMesh_a0tk4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38804, 0, 2.01862)
 shape = SubResource("BoxShape3D_r3fl7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.23537, 0)
