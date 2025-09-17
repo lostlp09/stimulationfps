@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ck3b3856hxyq0"]
+[gd_scene load_steps=13 format=3 uid="uid://ck3b3856hxyq0"]
 
 [ext_resource type="Script" uid="uid://cow37h60cjnxk" path="res://character_body_3d.gd" id="1_a0tk4"]
 [ext_resource type="Script" uid="uid://bt5lr7xcp3anb" path="res://camerascript.gd" id="1_a202f"]
 [ext_resource type="Script" uid="uid://kyp1l33vrw5i" path="res://beanplayer.gd" id="1_noarx"]
+[ext_resource type="PackedScene" uid="uid://cgi8lj5rvmlk7" path="res://ak47.fbx" id="4_r3fl7"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_a202f"]
 
@@ -13,6 +14,8 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_noarx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r3fl7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]
 
@@ -35,6 +38,7 @@ script = ExtResource("1_a0tk4")
 shape = SubResource("CapsuleShape3D_r3fl7")
 
 [node name="Beanplayer" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117502, 0, 0.00926328)
 mesh = SubResource("CapsuleMesh_a202f")
 skeleton = NodePath("../..")
 script = ExtResource("1_noarx")
@@ -45,8 +49,19 @@ mesh = SubResource("BoxMesh_noarx")
 skeleton = NodePath("../../..")
 script = ExtResource("1_a202f")
 
+[node name="Node3D" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(0.999912, -0.004365, -0.0125069, 0.00430075, 0.999977, -0.00516029, 0.0125292, 0.00510605, 0.999908, -0.232174, -0.0855119, -0.522636)
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23163, 0.866244, -0.473661)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00760126, 1.84519, 0.00175661)
+
+[node name="ak47" parent="Camera3D" instance=ExtResource("4_r3fl7")]
+transform = Transform3D(-0.00162054, -0.000807526, -0.188673, -0.000668621, 0.184996, -0.000811505, 0.129559, 0.000944619, -0.00236413, -0.219196, -0.429587, -0.702882)
+
+[node name="Hand" type="MeshInstance3D" parent="Camera3D/ak47"]
+transform = Transform3D(6.79773, -0.231049, 0.24986, 0.162723, 0.430043, 0.656242, -1.57885, -0.42647, 0.572284, 1.5688, 1.36017, -1.13353)
+mesh = SubResource("BoxMesh_r3fl7")
+skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

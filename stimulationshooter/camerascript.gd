@@ -1,12 +1,14 @@
 extends MeshInstance3D
 @onready var playerCamera:Camera3D = $"../../../Camera3D"
 
+
 # Called when the node enters the scene tree for the first time.
 
 
 var pitch:float = 0.0
 
 func _input(event: InputEvent) -> void:
+	
 
 	
 	
@@ -37,6 +39,8 @@ func _input(event: InputEvent) -> void:
 
 		playerCamera.rotation.y =  self.get_parent().get_parent().rotation.y
 		playerCamera.rotation.x = self.rotation.x
+
+	
 	
 		
 
