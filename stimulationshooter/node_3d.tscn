@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ck3b3856hxyq0"]
+[gd_scene load_steps=18 format=3 uid="uid://ck3b3856hxyq0"]
 
 [ext_resource type="Script" uid="uid://cow37h60cjnxk" path="res://character_body_3d.gd" id="1_a0tk4"]
 [ext_resource type="Script" uid="uid://bt5lr7xcp3anb" path="res://camerascript.gd" id="1_a202f"]
 [ext_resource type="Script" uid="uid://kyp1l33vrw5i" path="res://beanplayer.gd" id="1_noarx"]
 [ext_resource type="PackedScene" uid="uid://cgi8lj5rvmlk7" path="res://ak47.fbx" id="4_r3fl7"]
+[ext_resource type="Script" uid="uid://olh6hbd1b54i" path="res://SHOOT.gd" id="5_i5arm"]
+[ext_resource type="PackedScene" uid="uid://bdwpnsrykuc8s" path="res://2dscene.tscn" id="5_jka67"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_a202f"]
 
@@ -15,12 +17,20 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_noarx"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0.00021861, 0.259591, 0.805468, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_r3fl7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
 size = Vector3(25.4182, 1, 16.1339)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jsk3o"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -56,10 +66,12 @@ transform = Transform3D(0.999912, -0.004365, -0.0125069, 0.00430075, 0.999977, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00760126, 1.84519, 0.00175661)
 
 [node name="ak47" parent="Camera3D" instance=ExtResource("4_r3fl7")]
-transform = Transform3D(-0.00162054, -0.000807526, -0.188673, -0.000668621, 0.184996, -0.000811505, 0.129559, 0.000944619, -0.00236413, -0.219196, -0.429587, -0.702882)
+transform = Transform3D(-0.00162054, -0.000807526, -0.188673, -0.000668621, 0.184996, -0.000811505, 0.129559, 0.000944619, -0.00236413, -0.219196, -0.429587, -0.540414)
+script = ExtResource("5_i5arm")
 
 [node name="Hand" type="MeshInstance3D" parent="Camera3D/ak47"]
-transform = Transform3D(6.79773, -0.231049, 0.24986, 0.162723, 0.430043, 0.656242, -1.57885, -0.42647, 0.572284, 1.5688, 1.36017, -1.13353)
+transform = Transform3D(4.4364, -0.241132, 0.237602, 0.106198, 0.448809, 0.624046, -1.0304, -0.44508, 0.544208, 1.07637, 1.29889, -0.904954)
+material_override = SubResource("StandardMaterial3D_r3fl7")
 mesh = SubResource("BoxMesh_r3fl7")
 skeleton = NodePath("../../..")
 
@@ -74,4 +86,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38804, 0, 2.01862)
 shape = SubResource("BoxShape3D_r3fl7")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.23537, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016717, 3.20164, -0.00880098)
+
+[node name="2Dscene" parent="." instance=ExtResource("5_jka67")]
+
+[node name="Bullet" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 1.17927, -2.51476)
+material_override = SubResource("StandardMaterial3D_wc5p8")
+mesh = SubResource("BoxMesh_jsk3o")

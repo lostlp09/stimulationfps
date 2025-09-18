@@ -7,6 +7,7 @@ extends MeshInstance3D
 
 var pitch:float = 0.0
 
+
 func _input(event: InputEvent) -> void:
 	
 
@@ -29,8 +30,8 @@ func _input(event: InputEvent) -> void:
 		
 		pitch-= delta.y * 0.003
 		
-		pitch = clamp(pitch,deg_to_rad(-89),deg_to_rad(89))
-		print(pitch)
+		pitch = clamp(pitch,deg_to_rad(-30),deg_to_rad(89))
+
 		
 	
 	
